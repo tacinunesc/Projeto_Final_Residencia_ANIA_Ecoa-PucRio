@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Apresentação executiva DataConnect sobre IA e prioridades de formação para 2027.">
+  <title>DataConnect | IA e formação para 2027</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #10243a;
+      --ink: #15233a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --teal: #0f9f91;
+      --teal-dark: #087f73;
+      --blue: #3b82f6;
+      --amber: #d97706;
+      --red: #b45309;
+      --paper: #f4f7fb;
+      --white: #fff;
+      --shadow: 0 14px 40px rgba(15, 35, 60, .09);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #e8eef5;
+      color: var(--ink);
+      font: 16px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .deck { padding: 28px 20px 96px; }
+    .slide {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: min(1180px, 100%);
+      min-height: min(720px, calc(100vh - 60px));
+      margin: 0 auto 28px;
+      padding: clamp(30px, 6vw, 76px);
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid #dce5ef;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+    .slide::after {
+      position: absolute;
+      z-index: 0;
+      top: -150px;
+      right: -120px;
+      width: 360px;
+      height: 360px;
+      border: 1px solid #0f9f9117;
+      border-radius: 50%;
+      box-shadow: 0 0 0 48px #0f9f9108, 0 0 0 96px #0f9f9105;
+      content: "";
+      pointer-events: none;
+    }
+    .slide > * { position: relative; z-index: 1; }
+    .cover {
+      color: white;
+      background: linear-gradient(125deg, #10243a 5%, #173c56 63%, #0d766e);
+    }
+    .cover::after { border-color: #ffffff30; box-shadow: 0 0 0 48px #ffffff0b, 0 0 0 96px #ffffff07; }
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .cover .eyebrow { color: #9be7df; }
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin-bottom: 34px;
+      overflow: hidden;
+      background: #17233f;
+      border-radius: 8px;
+    }
+    .brand-lockup img { display: block; width: 255px; height: 97px; object-fit: contain; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 880px;
+      margin-bottom: 20px;
+      font-size: clamp(42px, 6vw, 76px);
+      letter-spacing: -.055em;
+      line-height: 1.03;
+    }
+    h2 {
+      max-width: 900px;
+      margin-bottom: 12px;
+      font-size: clamp(30px, 4vw, 48px);
+      letter-spacing: -.04em;
+      line-height: 1.08;
+    }
+    h3 { margin-bottom: 8px; font-size: 19px; line-height: 1.25; }
+    .lead { max-width: 820px; color: #d7e7f1; font-size: clamp(18px, 2vw, 23px); }
+    .dek { max-width: 880px; margin-bottom: 28px; color: var(--muted); font-size: 18px; }
+    .cover .dek { color: #d7e7f1; }
+    .cover-meta { margin-top: 46px; color: #c5d5e0; font-size: 14px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 28px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+      color: #f3fbff;
+      background: #ffffff12;
+      border: 1px solid #ffffff35;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .grid { display: grid; gap: 16px; }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .card {
+      min-width: 0;
+      padding: 21px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      box-shadow: 0 5px 18px rgba(15, 35, 60, .04);
+    }
+    .metric-label { color: var(--muted); font-size: 12px; font-weight: 750; }
+    .metric {
+      margin: 8px 0 2px;
+      color: var(--navy);
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 850;
+      letter-spacing: -.05em;
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
+    .metric-note, .small { color: var(--muted); font-size: 12px; }
+    .callout {
+      margin-top: 18px;
+      padding: 17px 19px;
+      background: #eaf8f6;
+      border-left: 4px solid var(--teal);
+      border-radius: 0 12px 12px 0;
+    }
+    .callout strong { color: #075e57; }
+    .caution { background: #fff7ed; border-left-color: var(--amber); }
+    .caution strong { color: #9a3412; }
+    .insight {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .insight:last-child { border-bottom: 0; }
+    .num {
+      display: grid;
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      color: var(--teal-dark);
+      background: #dff4f0;
+      border-radius: 10px;
+      font-weight: 850;
+    }
+    .insight p, .card p { margin-bottom: 0; }
+    .track { height: 12px; overflow: hidden; background: #e9eff5; border-radius: 9px; }
+    .fill { height: 100%; background: linear-gradient(90deg, var(--teal), #63cdbf); border-radius: inherit; }
+    .fill.blue { background: linear-gradient(90deg, #3276d2, #8cbcff); }
+    .bar-item { margin: 15px 0; }
+    .bar-heading { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 6px; font-size: 13px; }
+    .bar-heading strong { font-variant-numeric: tabular-nums; }
+    .salary-trend { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+    .salary-point { padding: 8px; background: #f8fafc; border-radius: 9px; }
+    .salary-point strong { display: block; color: var(--navy); font-size: 12px; font-variant-numeric: tabular-nums; }
+    .salary-point span { color: var(--muted); font-size: 11px; }
+    .course-no {
+      display: inline-block;
+      margin-bottom: 13px;
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .course p { color: #475569; font-size: 14px; }
+    .course .evidence { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; counter-reset: step; }
+    .step { position: relative; padding: 20px 20px 20px 58px; background: #fff; border: 1px solid var(--line); border-radius: 16px; }
+    .step::before {
+      position: absolute; top: 18px; left: 18px;
+      display: grid; width: 27px; height: 27px; place-items: center;
+      color: white; background: var(--teal-dark); border-radius: 8px;
+      content: counter(step); counter-increment: step; font-size: 13px; font-weight: 850;
+    }
+    .step p { margin: 0; color: var(--muted); font-size: 13px; }
+    .source-list { padding-left: 18px; color: #475569; font-size: 13px; }
+    .source-list li { margin: 8px 0; overflow-wrap: anywhere; }
+    a { color: #087f73; }
+    .slide-foot {
+      position: absolute;
+      right: clamp(30px, 6vw, 76px);
+      bottom: 20px;
+      left: clamp(30px, 6vw, 76px);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: #8a98a9;
+      font-size: 11px;
+    }
+    .controls {
+      position: fixed;
+      z-index: 10;
+      right: 20px;
+      bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+    }
+    .controls button {
+      padding: 9px 13px;
+      color: var(--ink);
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 750;
+      cursor: pointer;
+    }
+    .controls button:hover { background: #eaf8f6; }
+    #page-count { min-width: 45px; color: var(--muted); text-align: center; font-size: 12px; font-weight: 750; }
+    @media (max-width: 760px) {
+      .deck { padding: 12px 10px 84px; }
+      .slide { min-height: auto; padding: 30px 24px 60px; border-radius: 18px; }
+      .two, .three, .four, .steps { grid-template-columns: 1fr; }
+      .slide-foot { left: 24px; right: 24px; }
+    }
+    @media print {
+      @page { size: 13.333in 7.5in; margin: 0; }
+      body, .deck { padding: 0; background: #fff; font-size: 12px; line-height: 1.3; }
+      .slide {
+        width: 13.333in; height: 7.5in; min-height: 0; margin: 0; padding: .65in .8in;
+        border: 0; border-radius: 0; box-shadow: none; break-after: page; page-break-after: always;
+      }
+      .slide:not(#slide-1):not(#slide-5):not(#slide-6):not(#slide-7) { padding-top: .6in; padding-bottom: .6in; }
+      .slide#slide-5 { padding-top: 0; padding-bottom: 0; }
+      .slide#slide-5 .dek { margin-bottom: 10px; }
+      .slide#slide-5 .grid { gap: 8px; }
+      .slide#slide-5 .card { padding: 6px; }
+      .slide#slide-5 h3 { margin-top: 8px; margin-bottom: 4px; }
+      .slide#slide-5 p { margin-bottom: 4px; }
+      .slide#slide-5 .small { font-size: 10px; line-height: 1.15; }
+      .slide#slide-5 .bar-item { margin: 3px 0; }
+      .slide#slide-5 .callout { margin-top: 7px; padding: 6px 10px; }
+      .slide#slide-5 .salary-trend { gap: 4px; margin-top: 6px; }
+      .slide#slide-5 .salary-point { padding: 4px; }
+      .slide#slide-6 { padding-top: .4in; padding-bottom: .4in; }
+      .slide#slide-7 { padding-top: .08in; padding-bottom: .1in; }
+      .slide#slide-8 { padding-top: .25in; padding-bottom: .3in; }
+      .slide#slide-8 .card { padding: 10px; }
+      .slide#slide-8 .source-list li { margin: 3px 0; }
+      h1 { font-size: 52px; }
+      h2 { margin-bottom: 8px; font-size: 34px; }
+      h3 { margin-bottom: 6px; font-size: 16px; }
+      .dek { margin-bottom: 16px; font-size: 14px; }
+      .lead { font-size: 18px; }
+      .grid, .steps { gap: 10px; }
+      .card { padding: 14px; }
+      .callout { margin-top: 10px; padding: 10px 12px; }
+      .bar-item { margin: 8px 0; }
+      .insight { gap: 10px; padding: 8px 0; }
+      .step { padding: 14px 14px 14px 50px; }
+      .step::before { top: 14px; left: 14px; }
+      .source-list { font-size: 11px; }
+      .source-list li { margin: 5px 0; }
+      .cover-meta { margin-top: 22px; }
+      .tag-row { margin-top: 16px; }
+      .slide:last-child { break-after: auto; page-break-after: auto; }
+      .controls { display: none; }
+      .card { box-shadow: none; }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide cover" id="slide-1">
+      <div class="brand-lockup">
+        <img src="DataConnect_Logo.png" alt="DataConnect Solutions">
+      </div>
+      <p class="eyebrow">Briefing executivo · ECOA / PUC-Rio</p>
+      <h1>Inteligência artificial: prioridades para 2027</h1>
+      <p class="lead">O que os sinais de adoção nas empresas sugerem para capacitação, aplicação prática e próximos passos.</p>
+      <div class="tag-row">
+        <span class="tag">TIC Empresas · foco principal</span>
+        <span class="tag">RAIS e PNAD · contexto complementar</span>
+        <span class="tag">Portfólio de cursos 2027</span>
+      </div>
+      <p class="cover-meta">À atenção de Débora · Gestora de Inovação<br>Proposta para discussão e decisão</p>
+      <div class="slide-foot"><span>ECOA / PUC-Rio</span><span>01 / 08</span></div>
+    </section>
+
+    <section class="slide" id="slide-2">
+      <p class="eyebrow">01 · Síntese executiva</p>
+      <h2>IA: a oportunidade está em transformar uso em capacidade</h2>
+      <p class="dek">Os indicadores TIC Empresas calculados para 2025 sugerem maior adoção, experimentação de diferentes tecnologias e barreiras ligadas a pessoas, custos e conhecimento.</p>
+      <div class="grid three">
+        <article class="card">
+          <div class="metric-label">Empresas que adotam IA</div>
+          <div class="metric">26,01%</div>
+          <div class="metric-note">vs. 19,04% em 2021 · +6,97 p.p.</div>
+        </article>
+        <article class="card">
+          <div class="metric-label">Automação de fluxos</div>
+          <div class="metric">33,63%</div>
+          <div class="metric-note">Entre respostas válidas do indicador de tecnologia de IA</div>
+        </article>
+        <article class="card">
+          <div class="metric-label">Falta de pessoas capacitadas</div>
+          <div class="metric">43,8%</div>
+          <div class="metric-note">Respostas válidas de empresas sobre barreiras</div>
+        </article>
+      </div>
+      <div class="callout"><strong>Recomendação:</strong> validar com empresas duas ofertas-piloto: IA generativa aplicada ao trabalho e automação de processos com IA.</div>
+      <div class="callout caution"><strong>Nota para decisão:</strong> percentuais vêm de cálculos exploratórios do notebook TIC Empresas; confirmar códigos especiais e denominadores antes de divulgação externa. Os dados não medem diretamente demanda ou disposição a pagar por cursos.</div>
+      <div class="slide-foot"><span>Foco: inteligência artificial nas empresas</span><span>02 / 08</span></div>
+    </section>
+
+    <section class="slide" id="slide-3">
+      <p class="eyebrow">02 · Adoção e aplicações</p>
+      <h2>Automação lidera; usos de IA aparecem em várias áreas de negócio</h2>
+      <p class="dek">Os indicadores apontam automação de fluxos, geração de linguagem natural e uso em marketing ou vendas. Os resultados são preliminares e não devem ser tratados como comparação direta entre categorias.</p>
+      <div class="grid two">
+        <article class="card">
+          <h3>Tipos de IA reportados · 2025</h3>
+          <div class="bar-item">
+            <div class="bar-heading"><span>Automação de fluxos de trabalho</span><strong>33,63%</strong></div>
+            <div class="track"><div class="fill" style="width:100%"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-heading"><span>Geração de linguagem natural</span><strong>11,97%</strong></div>
+            <div class="track"><div class="fill" style="width:35.6%"></div></div>
+          </div>
+          <p class="small">Percentuais sobre respostas válidas de cada variável; denominadores podem variar entre tecnologias.</p>
+        </article>
+        <article class="card">
+          <h3>Aplicação empresarial · 2025</h3>
+          <div class="bar-item">
+            <div class="bar-heading"><span>Marketing ou vendas</span><strong>11,32%</strong></div>
+            <div class="track"><div class="fill blue" style="width:100%"></div></div>
+          </div>
+          <div class="callout caution"><strong>Leitura:</strong> marketing ou vendas é um exemplo de aplicação; confirme o denominador antes de comparar com outras áreas ou definir uma oferta.</div>
+        </article>
+      </div>
+      <div class="slide-foot"><span>Fonte: indicadores TIC Empresas calculados no notebook local</span><span>03 / 08</span></div>
+    </section>
+
+    <section class="slide" id="slide-4">
+      <p class="eyebrow">03 · Barreiras à adoção</p>
+      <h2>Capacitação é parte da resposta — junto com custo e conhecimento</h2>
+      <p class="dek">As barreiras reportadas sugerem que o portfólio não deve ensinar apenas ferramentas: precisa apoiar aplicação, escolha e uso responsável.</p>
+      <div class="grid two">
+        <article class="card">
+          <h3>Obstáculos reportados · 2025</h3>
+          <div class="bar-item">
+            <div class="bar-heading"><span>Custos elevados</span><strong>46,5%</strong></div>
+            <div class="track"><div class="fill" style="width:100%"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-heading"><span>Falta de pessoas capacitadas</span><strong>43,8%</strong></div>
+            <div class="track"><div class="fill" style="width:94.2%"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-heading"><span>Desconhecimento sobre IA adequada</span><strong>43,5%</strong></div>
+            <div class="track"><div class="fill" style="width:93.5%"></div></div>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Implicações para a formação</h3>
+          <div class="insight"><span class="num">1</span><p><strong>Capacitar por tarefa:</strong> prática com fluxos reais, validação de respostas e mensuração de resultados.</p></div>
+          <div class="insight"><span class="num">2</span><p><strong>Reduzir barreira de conhecimento:</strong> ajudar equipes a selecionar ferramentas e identificar casos de uso viáveis.</p></div>
+          <div class="insight"><span class="num">3</span><p><strong>Construir confiança:</strong> incluir privacidade, proteção de dados e supervisão humana desde o início.</p></div>
+          <div class="callout caution"><strong>Validação:</strong> percentuais são resultados exploratórios do notebook; confirmar denominadores e respostas válidas antes de comunicação externa.</div>
+        </article>
+      </div>
+      <div class="slide-foot"><span>Os percentuais são sinais de barreiras, não prova de demanda por cursos</span><span>04 / 08</span></div>
+    </section>
+
+    <section class="slide" id="slide-5">
+      <p class="eyebrow">04 · Evidências de ocupação</p>
+      <h2>Os dados apontam públicos e contextos para testar as trilhas</h2>
+      <p class="dek">RAIS e PNAD ajudam a identificar funções de tecnologia e a presença de trabalhadores formais e informais — como contexto para o desenho, não como medida de procura por cursos.</p>
+      <div class="grid two">
+        <article class="card">
+          <h3>RAIS · recorte de 8 ocupações</h3>
+          <div class="metric">124.487</div>
+          <p>Vínculos formais ativos em 2025 nas oito ocupações de tecnologia do recorte.</p>
+          <p class="small"><strong>Visão RAIS 2022–2025 do dashboard:</strong> 502.767 vínculos ativos somados por ano (não únicos) · remuneração média ponderada de R$ 7.680,46 · 59,3% com superior completo ou pós.</p>
+          <p class="small">Planilha: 137.893 linhas de dados (registros agregados). Em 2025, 165.395 é a soma bruta; 124.487 são ativos pelo indicador “Vínculo Ativo (31/12)”.</p>
+          <div class="bar-item">
+            <div class="bar-heading"><span>Analista de desenvolvimento de sistemas</span><strong>54.561 · 43,8%</strong></div>
+            <div class="track"><div class="fill" style="width:100%"></div></div>
+          </div>
+          <h3 style="margin-top:14px">Engenheiro de aplicativos em computação</h3>
+          <p class="small">Remuneração média ponderada por vínculo ativo · aumento nominal de 22,0% entre 2022 e 2025</p>
+          <div class="salary-trend" aria-label="Remuneração média ponderada por vínculo ativo: 2022, R$ 15.658,57; 2023, R$ 16.208,23; 2024, R$ 18.064,43; 2025, R$ 19.099,21">
+            <div class="salary-point"><span>2022</span><strong>R$ 15.659</strong></div>
+            <div class="salary-point"><span>2023</span><strong>R$ 16.208</strong></div>
+            <div class="salary-point"><span>2024</span><strong>R$ 18.064</strong></div>
+            <div class="salary-point"><span>2025</span><strong>R$ 19.099</strong></div>
+          </div>
+          <p class="small">Valores nominais, não corrigidos pela inflação. A tendência salarial não prova demanda por cursos nem relação causal com IA.</p>
+        </article>
+        <article class="card">
+          <h3>PNAD Contínua · 4º tri. 2025</h3>
+          <div class="metric">288.866</div>
+          <p>Estimativa de trabalhadores informais em 13 grupos COD selecionados. Nos mesmos grupos, a estimativa formal é 1.197.864.</p>
+          <div class="bar-item">
+            <div class="bar-heading"><span>Técnicos em operações de TI e comunicações (3511, n=139)</span><strong>80.644</strong></div>
+            <div class="track"><div class="fill blue" style="width:100%"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-heading"><span>Técnicos de redes e sistemas (3513, n=94)</span><strong>58.107</strong></div>
+            <div class="track"><div class="fill blue" style="width:72%"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-heading"><span>Analistas de sistemas (2511, n=83)</span><strong>51.665</strong></div>
+            <div class="track"><div class="fill blue" style="width:64.1%"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-heading"><span>Desenvolvedores de software (2512, n=75)</span><strong>42.891</strong></div>
+            <div class="track"><div class="fill blue" style="width:53.2%"></div></div>
+          </div>
+          <p class="small">Esses quatro grupos representam 80,8% da estimativa informal selecionada; estimativas ponderadas, com amostras distintas.</p>
+        </article>
+      </div>
+      <div class="callout caution"><strong>Implicação curricular:</strong> priorizar casos práticos que cruzem software, operações e suporte de TI; desenhar conteúdos em camadas para diferentes vínculos e níveis de experiência. A PNAD estima pessoas; a RAIS conta vínculos, e seus recortes ocupacionais não são equivalentes.</div>
+      <div class="slide-foot"><span>Fontes: planilha RAIS local e microdados PNAD/IBGE; recortes descritos no slide final</span><span>05 / 08</span></div>
+    </section>
+
+    <section class="slide" id="slide-6">
+      <p class="eyebrow">04 · Proposta de portfólio 2027</p>
+      <h2>Três trilhas como hipóteses a testar</h2>
+      <p class="dek">IA Empresas, RAIS e PNAD oferecem sinais complementares sobre adoção e públicos ocupacionais, mas não confirmam sozinhas a procura por uma formação específica.</p>
+      <div class="grid three">
+        <article class="card course">
+          <span class="course-no">01 · Entrada ampla</span>
+          <h3>IA prática para equipes</h3>
+          <p>Fundamentos, seleção de ferramentas, prompts, validação de respostas e aplicação em rotinas profissionais.</p>
+          <div class="evidence"><strong>Sinal:</strong> PNAD inclui trabalhadores formais e informais em grupos técnicos de TI. <strong>Validar:</strong> público, tarefas e nível de conhecimento inicial.</div>
+        </article>
+        <article class="card course">
+          <span class="course-no">02 · Aplicação em negócio</span>
+          <h3>Automação e IA em processos</h3>
+          <p>Mapeamento de tarefas, automação de fluxos, integração de ferramentas e mensuração de ganhos.</p>
+          <div class="evidence"><strong>Sinal:</strong> operações e suporte aparecem entre as maiores ocupações nos recortes RAIS/PNAD. <strong>Validar:</strong> fluxos e casos de uso reais.</div>
+        </article>
+        <article class="card course">
+          <span class="course-no">03 · Fundamentos responsáveis</span>
+          <h3>Dados, governança e uso responsável</h3>
+          <p>Qualidade de dados, privacidade, segurança, supervisão humana e critérios de adoção responsável.</p>
+          <div class="evidence"><strong>Sinal:</strong> a TIC Empresas aponta custos e falta de capacitação/conhecimento como barreiras preliminares. <strong>Validar:</strong> exigências de governança por setor.</div>
+        </article>
+      </div>
+      <div class="callout"><strong>Proposta:</strong> manter as três trilhas no radar; escolher uma ou duas para piloto somente após ouvir organizações e potenciais alunos.</div>
+      <div class="slide-foot"><span>Trilhas sugeridas pelos dados; priorização final exige validação com empresas</span><span>06 / 08</span></div>
+    </section>
+
+    <section class="slide" id="slide-7">
+      <p class="eyebrow">06 · Plano de validação</p>
+      <h2>Transformar sinais em evidência de demanda</h2>
+      <p class="dek">Uma rodada enxuta pode reduzir o risco de desenhar cursos sem aderência à necessidade dos públicos.</p>
+      <div class="steps">
+        <article class="step"><h3>Ouvir</h3><p>Entrevistar empresas parceiras, RH, lideranças de inovação, profissionais e alunos potenciais. Explorar tarefas, lacunas e restrições.</p></article>
+        <article class="step"><h3>Priorizar</h3><p>Comparar urgência, público, disposição a investir, disponibilidade de docentes e diferenciação da ECOA/PUC-Rio.</p></article>
+        <article class="step"><h3>Pilotar e medir</h3><p>Testar uma formação curta. Acompanhar inscrições, presença, conclusão, satisfação, aplicação prática e interesse B2B.</p></article>
+      </div>
+      <div class="grid two" style="margin-top:16px">
+        <article class="card">
+          <h3>Perguntas para entrevistas</h3>
+          <ul class="source-list">
+            <li>Quais atividades de trabalho já são apoiadas por IA ou automação?</li>
+            <li>Que competências estão faltando hoje — e para quais equipes?</li>
+            <li>Qual formato, carga horária e nível seriam viáveis?</li>
+            <li>Que resultado demonstraria valor após o curso?</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Critérios de passagem para piloto</h3>
+          <ul class="source-list">
+            <li>Necessidade repetida por mais de uma organização.</li>
+            <li>Público-alvo e resultado de aprendizagem bem definidos.</li>
+            <li>Parceiro disposto a apoiar caso prático, divulgação ou turma.</li>
+            <li>Viabilidade pedagógica e econômica confirmada pela ECOA.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="slide-foot"><span>Proposta de processo; metas finais a combinar com a gestora</span><span>07 / 08</span></div>
+    </section>
+
+    <section class="slide" id="slide-8">
+      <p class="eyebrow">07 · Decisão solicitada</p>
+      <h2>Autorizar a validação do portfólio</h2>
+      <p class="dek">A decisão imediata não é aprovar uma grade definitiva. É aprovar o próximo passo para descobrir quais cursos merecem virar piloto.</p>
+      <div class="grid two">
+        <article class="recommend" style="padding:26px;background:var(--navy);color:#fff;border-radius:18px">
+          <h3>Pedido à Débora</h3>
+          <ol style="padding-left:20px;color:#d8e5f0">
+            <li style="margin:10px 0">Aprovar a rodada de validação com empresas e públicos potenciais.</li>
+            <li style="margin:10px 0">Indicar organizações/parceiros para entrevistas e casos de uso.</li>
+            <li style="margin:10px 0">Definir critérios de sucesso e responsáveis pelo desenho do piloto.</li>
+          </ol>
+        </article>
+        <article class="card">
+          <h3>Próximo marco</h3>
+          <p style="font-size:20px;font-weight:800;color:var(--navy)">Voltar com evidências, priorização e proposta de piloto.</p>
+          <p class="small">Prazo, quantidade de entrevistas e recursos devem ser pactuados pela equipe antes do início.</p>
+          <div class="callout"><strong>Mensagem final:</strong> usar dados para formular boas perguntas; usar validação com o mercado para decidir a oferta.</div>
+        </article>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Fontes e escopo</h3>
+        <ul class="source-list">
+          <li>RAIS 2025: planilha local “RAIS 2022-2025.xlsx”; 124.487 vínculos ativos nas oito ocupações de tecnologia selecionadas, calculados pela quantidade de vínculos filtrada pelo indicador ativo. O arquivo possui 137.893 linhas de dados em 2022–2025. Não representa todas as ocupações TIC.</li>
+          <li>PNAD Contínua: microdados do 4º trimestre de 2025 e dicionário IBGE; estimativas ponderadas para 13 grupos COD (2511–2529 e 3511–3514). Informalidade classificada por categoria ocupacional e registro/CNPJ; estimativas por grupo têm incerteza amostral.</li>
+          <li>TIC Empresas 2021–2025: análise exploratória do projeto sobre adoção e uso de IA; indicadores descrevem empresas e não medem diretamente demanda por cursos.</li>
+        </ul>
+        <p class="small">RAIS 2025 e PNAD Contínua (4º tri. 2025) aparecem apenas como contexto de ocupação; medem, respectivamente, vínculos formais ativos e pessoas ocupadas, com escopos distintos.</p>
+      </div>
+      <div class="slide-foot"><span>Briefing executivo · ECOA / PUC-Rio</span><span>08 / 08</span></div>
+    </section>
+  </main>
+  <nav class="controls" aria-label="Controles da apresentação">
+    <button type="button" id="prev" aria-label="Slide anterior">← Anterior</button>
+    <span id="page-count" aria-live="polite">1 / 7</span>
+    <button type="button" id="next" aria-label="Próximo slide">Próximo →</button>
+    <button type="button" onclick="window.print()">Imprimir / PDF</button>
+  </nav>
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    const counter = document.getElementById("page-count");
+    let activeSlide = 0;
+    function showSlide(index) {
+      activeSlide = Math.max(0, Math.min(index, slides.length - 1));
+      slides[activeSlide].scrollIntoView({ behavior: "smooth", block: "start" });
+      counter.textContent = `${activeSlide + 1} / ${slides.length}`;
+    }
+    document.getElementById("prev").addEventListener("click", () => showSlide(activeSlide - 1));
+    document.getElementById("next").addEventListener("click", () => showSlide(activeSlide + 1));
+    document.addEventListener("keydown", (event) => {
+      if (["ArrowRight", "PageDown", " "].includes(event.key)) {
+        event.preventDefault();
+        showSlide(activeSlide + 1);
+      } else if (["ArrowLeft", "PageUp"].includes(event.key)) {
+        event.preventDefault();
+        showSlide(activeSlide - 1);
+      }
+    });
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) {
+        activeSlide = slides.indexOf(visible.target);
+        counter.textContent = `${activeSlide + 1} / ${slides.length}`;
+      }
+    }, { threshold: [0.35, 0.6] });
+    slides.forEach((slide) => observer.observe(slide));
+  </script>
+</body>
+</html>

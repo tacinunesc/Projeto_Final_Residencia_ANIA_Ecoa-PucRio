@@ -1,0 +1,18 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Executar dashboard_IA_Ecoa_2027.py (Streamlit)",
+			"type": "shell",
+			"command": "C:\\Users\\Tacila\\Desktop\\dashboard\\.venv\\Scripts\\python.exe",
+			"args": [
+				"-m",
+				"streamlit",
+				"run",
+				"dashboard_IA_Ecoa_2027.py"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}
